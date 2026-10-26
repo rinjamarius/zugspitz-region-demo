@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entwurf – Zugspitz Region GmbH im Zugspitz-Region-Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --zr-petrol:#00819E; --zr-petrol-dark:#0F6A7D;
+  --zr-text:#292923; --zr-white:#FFFFFF;
+  --zr-grey:#EBEBEB; --zr-grey-2:#EFEFEF;
+  --zr-overlay:rgba(41,41,35,.8); --zr-overlay-soft:rgba(41,41,35,.5);
+  --zr-max:95rem;
+  --zr-font:Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  /* Farbcode der Handlungsfelder (Logofarben, von der GmbH-Seite übernommen) */
+  --f-regional:#C52750; --f-gesundheit:#90072A; --f-tourismus:#0C8FAE;
+  --f-wirtschaft:#4D8636; --f-landwirtschaft:#6AB248; --f-energie:#E99500;
+  --fs-s:clamp(14px, calc(14px + 4 * ((100vw - 420px) / 860)), 18px);
+  --fs-m:clamp(16px, calc(16px + 6 * ((100vw - 420px) / 860)), 22px);
+  --fs-l:clamp(24px, calc(24px + 12 * ((100vw - 420px) / 860)), 36px);
+  --fs-xxl:clamp(36px, calc(36px + 36 * ((100vw - 420px) / 860)), 72px);
+  --fs-xs:clamp(11px, calc(11px + 3 * ((100vw - 420px) / 860)), 14px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:400 var(--fs-s)/1.5 var(--zr-font);color:var(--zr-text);background:var(--zr-white)}
+img{max-width:100%;display:block}
+a{color:var(--zr-petrol);font-weight:700}
+h1,h2,h3{margin:0;line-height:1.2;font-weight:700}
+:focus-visible{outline:2px solid #fff;box-shadow:0 0 0 4px #000}
+.skip{position:absolute;left:-999px;top:0;background:#fff;padding:.5rem 1rem;z-index:100}
+.skip:focus{left:1rem}
+.wrap{max-width:var(--zr-max);margin:0 auto;padding:0 clamp(16px,3vw,2rem)}
+.section{padding:clamp(48px,6vw,96px) 0}
+.section-title{font-size:var(--fs-l);text-align:center;margin-bottom:clamp(24px,3vw,40px)}
+.lead{max-width:71rem;margin:0 auto}
+
+/* Entwurfs-Hinweis */
+.draft{background:var(--zr-text);color:#fff;font-size:12px;text-align:center;padding:6px 16px;letter-spacing:.02em}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:.5rem;min-height:clamp(42px,4vw,52px);padding:0 12px;border:2px solid var(--zr-petrol);border-radius:0;background:#fff;color:var(--zr-petrol);font-weight:700;line-height:1.2;text-decoration:none;font-size:var(--fs-s);cursor:pointer;transition:background .15s,color .15s}
+.btn:hover{background:var(--zr-petrol);color:#fff}
+.btn--conv{background:var(--zr-petrol);color:#fff}
+.btn--conv:hover{background:#fff;color:var(--zr-petrol)}
+.btn--light{background:transparent;color:#fff;border-color:#fff}
+.btn--light:hover{background:#fff;color:var(--zr-petrol)}
+.btn svg{width:1.15em;height:1.15em;flex:none}
+.btn .ico-img{width:26px;height:26px;object-fit:cover;flex:none}
+
+/* Header */
+.header{position:sticky;top:0;z-index:50;background:#fff;box-shadow:0 0 6px 2px rgb(0 0 0 / .12)}
+.header__in{display:flex;align-items:center;gap:1.5rem;min-height:84px}
+.brand{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+.brand img{height:64px;width:auto}
+.brand .stoerer{height:48px;border-left:1px solid var(--zr-grey);padding-left:.75rem}
+.nav{margin-left:auto}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:clamp(.75rem,2vw,2rem)}
+.nav > ul > li{position:relative}
+.nav a{text-decoration:none;color:var(--zr-petrol);font-weight:700;font-size:var(--fs-s);padding:.5rem 0;display:block}
+.nav a:hover{text-decoration:underline}
+.nav .sub{position:absolute;top:100%;left:-1rem;background:#fff;min-width:220px;padding:.5rem 1rem;box-shadow:0 0 6px 2px rgb(0 0 0 / .25);display:none;flex-direction:column;gap:0}
+.nav li:hover > .sub,.nav li:focus-within > .sub{display:flex}
+.nav .sub a{font-weight:400;color:var(--zr-text)}
+.header__actions{display:flex;align-items:center;gap:.5rem}
+.icon-btn{width:48px;height:48px;display:inline-grid;place-items:center;border:2px solid transparent;background:transparent;color:var(--zr-petrol);cursor:pointer}
+.icon-btn:hover{border-color:var(--zr-petrol)}
+.icon-btn svg{width:22px;height:22px}
+.menu-toggle{display:none}
+
+/* Hero */
+.hero{position:relative;min-height:clamp(420px,62vh,720px);display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden}
+.hero > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.15) 45%,rgba(0,0,0,.45) 100%)}
+.hero__txt{position:relative;z-index:1;padding:2rem 1rem}
+.hero h1{font-size:var(--fs-xxl);text-shadow:0 2px 12px rgba(0,0,0,.45)}
+.hero p{font-size:var(--fs-m);margin:.75rem 0 0;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.credit{position:absolute;right:8px;bottom:8px;z-index:1;font:700 8px/10px "Arial Narrow",Arial,sans-serif;color:#fff;background:var(--zr-overlay-soft);padding:2px 4px}
+
+/* Quick-Links */
+.quick{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;padding:clamp(24px,3vw,40px) 0 0}
+
+/* Handlungsfelder */
+.fields{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.field{border:2px solid var(--zr-grey);display:flex;flex-direction:column;background:#fff;transition:border-color .15s}
+.field:hover{border-color:var(--c)}
+.field__head{display:flex;align-items:center;gap:1rem;padding:1.25rem 1.25rem 0;text-decoration:none;color:var(--zr-text)}
+.field__icon{width:64px;height:64px;flex:none;display:grid;place-items:center;background:var(--c)}
+.field__icon img{width:34px;height:auto}
+.field__head h3{font-size:var(--fs-m)}
+.field__bar{height:4px;background:var(--c);margin:1.25rem 1.25rem 0;width:48px}
+.field ul{list-style:none;margin:0;padding:1rem 1.25rem;display:flex;flex-direction:column;gap:.35rem;flex:1}
+.field ul a{font-weight:400;color:var(--zr-text);text-decoration:none}
+.field ul a:hover{color:var(--zr-petrol);text-decoration:underline}
+.field__more{padding:0 1.25rem 1.25rem}
+.field__more a{text-decoration:none}
+.field__more a::after{content:" ›"}
+
+/* News */
+.news{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.card{display:flex;flex-direction:column;background:#fff;text-decoration:none;color:var(--zr-text)}
+.card__media{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--zr-grey)}
+.card__media img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.card:hover .card__media img{transform:scale(1.04)}
+.card__media.contain img{object-fit:contain;padding:12%;background:#fff}
+.card__title{position:absolute;inset:auto 0 0 0;padding:3rem 1rem 1rem;color:#fff;font-size:var(--fs-m);font-weight:700;line-height:1.2;background:linear-gradient(0deg,rgba(0,0,0,.7),transparent)}
+.card__body{padding:1rem 0 0}
+.card__body p{margin:0 0 .75rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card__body span{color:var(--zr-petrol);font-weight:700}
+.center{text-align:center;margin-top:clamp(24px,3vw,40px)}
+
+/* Intro */
+.intro p{margin:0 0 1em}
+.intro .fieldlist{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin:1.5rem 0;padding:0;list-style:none}
+.chip{display:inline-flex;align-items:center;min-height:30px;padding:0 10px;border:1px solid var(--zr-petrol);color:var(--zr-petrol);text-decoration:none;font-size:var(--fs-xs);font-weight:400}
+.chip:hover{background:var(--zr-petrol);color:#fff}
+
+/* Leistungen */
+.grey{background:var(--zr-grey-2)}
+.services{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.service{background:#fff;padding:1.5rem}
+.service svg{width:2rem;height:2rem;color:var(--zr-petrol);margin-bottom:1rem}
+.service h3{font-size:var(--fs-m);margin-bottom:.5rem}
+.service p{margin:0}
+.service blockquote{margin:.75rem 0 0;font-style:italic;color:var(--zr-petrol-dark)}
+
+/* Dachmarke-Band */
+.band{background:var(--zr-petrol);color:#fff}
+.band__in{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+.band__media{background:#69C0D7;display:grid;place-items:center;padding:2rem;min-height:280px}
+.band__media img{width:min(100%,360px);height:auto;image-rendering:auto}
+.band__txt{padding:clamp(32px,5vw,64px)}
+.band__txt h2{font-size:var(--fs-l);margin-bottom:1rem}
+.band__txt p{margin:0 0 1.5rem}
+.band__links{display:flex;flex-wrap:wrap;gap:.75rem}
+
+/* Partner */
+.partners{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:clamp(24px,4vw,56px)}
+.partners img{max-height:72px;width:auto}
+
+/* Footer */
+.footer{border-top:1px solid var(--zr-grey);padding:clamp(32px,4vw,56px) 0 2rem}
+.footer__cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;align-items:start}
+.footer address{font-style:normal}
+.footer__social{display:flex;gap:.75rem;justify-content:flex-start}
+.footer__social img{width:36px;height:36px}
+.footer__legal{margin-top:2rem;text-align:center;font-size:var(--fs-xs)}
+.footer__legal a{margin:0 .25rem}
+.footer__brand img{height:56px;width:auto}
+
+/* Responsive */
+@media (max-width:1100px){
+  .fields,.news{grid-template-columns:repeat(2,1fr)}
+  .services{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:900px){
+  .menu-toggle{display:inline-grid}
+  .nav{position:fixed;inset:84px 0 0 0;background:#fff;display:none;overflow:auto;padding:1rem 16px;margin:0}
+  .nav.open{display:block}
+  .nav ul{flex-direction:column;gap:0}
+  .nav > ul > li{border-bottom:1px solid var(--zr-grey)}
+  .nav a{padding:.9rem 0;font-size:var(--fs-m)}
+  .nav .sub{position:static;display:flex;box-shadow:none;padding:0 0 .75rem 1rem;min-width:0}
+  .nav .sub a{padding:.4rem 0;font-size:var(--fs-s)}
+  .brand .stoerer{display:none}
+  .header__actions .btn{display:none}
+  .header__actions{margin-left:auto}
+  .band__in{grid-template-columns:1fr}
+  .footer__cols{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .fields,.news,.services{grid-template-columns:1fr}
+  .brand img{height:52px}
+  .header__in{min-height:72px}
+  .nav{inset:72px 0 0 0}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+<div class="draft">Entwurf · Redesign-Konzept der Startseite im Design von zugspitz-region.de · nicht die offizielle Website</div>
+
+<header class="header">
+  <div class="wrap header__in">
+    <a class="brand" href="https://www.zugspitz-region-gmbh.de/de/home.html" aria-label="Zugspitz Region GmbH – Startseite">
+      <img src="https://www.zugspitz-region-gmbh.de/media/images/common/logo-menu.png" alt="Zugspitz Region GmbH" width="225" height="130">
+    </a>
+    <a class="brand" href="https://www.zugspitz-region-gmbh.de/de/die-dachmarke-zugspitz-region.html" aria-label="Unsere Dachmarke">
+      <img class="stoerer" src="https://www.zugspitz-region-gmbh.de/media/images/common/Webseite_GmbH_Stoerer_225x130_02.png" alt="Unsere Dachmarke" width="225" height="130">
+    </a>
+    <nav class="nav" id="nav" aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="https://www.zugspitz-region-gmbh.de/de/wir-ueber-uns.html">Über uns</a>
+          <div class="sub">
+            <a href="https://www.zugspitz-region-gmbh.de/de/wir-ueber-uns.html">Zugspitz Region GmbH</a>
+            <a href="https://www.zugspitz-region-gmbh.de/de/gremien.html">Gremien</a>
+            <a href="https://www.zugspitz-region-gmbh.de/de/team.html">Team</a>
+            <a href="https://www.zugspitz-region-gmbh.de/de/gesellschafter.html">Gesellschafter</a>
+          </div>
+        </li>
+        <li><a href="#handlungsfelder">Handlungsfelder</a>
+          <div class="sub">
+            <a href="https://www.zugspitz-region-gmbh.de/de/regional-management.html">Regionalmanagement</a>
+            <a href="https://www.zugspitz-region-gmbh.de/de/gesundheit-soziales.html">Gesundheit &amp; Soziales</a>
+            <a href="https://www.zugspitz-region-gmbh.de/de/tourismus.html">Tourismus</a>
+            <a href="https://www.zugspitz-region-gmbh.de/de/wirtschaft.html">Wirtschaft</a>
+            <a href="https://www.zugspitz-region-gmbh.de/de/landwirtschaft-umwelt.html">Landwirtschaft &amp; Umwelt</a>
+            <a href="https://www.zugspitz-region-gmbh.de/de/energie-klimaschutz.html">Energie &amp; Klimaschutz</a>
+            <a href="https://www.zugspitz-region-gmbh.de/de/die-dachmarke-zugspitz-region.html">Dachmarkenmanagement</a>
+          </div>
+        </li>
+        <li><a href="https://www.zugspitz-region-gmbh.de/de/aktuelles.html">Aktuelles</a></li>
+        <li><a href="https://www.zugspitz-region-gmbh.de/de/events.html">Events</a></li>
+        <li><a href="https://www.zugspitz-region-gmbh.de/de/downloads.html">Downloads</a></li>
+      </ul>
+    </nav>
+    <div class="header__actions">
+      <button class="icon-btn" type="button" aria-label="Suche">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+      </button>
+      <a class="btn btn--conv" href="https://www.zugspitz-region-gmbh.de/de/team.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14"/><path d="m3 7 9 6 9-6"/></svg>Kontakt</a>
+      <button class="icon-btn menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav" id="menuBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="inhalt">
+  <section class="hero">
+    <img src="https://www.zugspitz-region-gmbh.de/media/images/headerimages/Header_GmbH_Highfive_02.jpg_image_scaler_2200x0.jpg" alt="" width="2200" height="650">
+    <div class="hero__txt">
+      <h1>Wir stärken gemeinsam<br>unsere Region</h1>
+      <p>Wirtschaftsförderung für den Landkreis Garmisch-Partenkirchen</p>
+    </div>
+    <span class="credit">© Zugspitz Region GmbH</span>
+  </section>
+
+  <div class="wrap quick" aria-label="Schnellzugriff">
+    <a class="btn" href="https://www.zugspitz-region-gmbh.de/de/wir-ueber-uns.html">
+      <picture><source media="(max-width:640px)" srcset="https://www.zugspitz-region-gmbh.de/media/images/common/about-mobile.png"><img class="ico-img" src="https://www.zugspitz-region-gmbh.de/media/images/common/about.png" alt=""></picture>Über uns</a>
+    <a class="btn" href="https://www.zugspitz-region-gmbh.de/de/aktuelles.html">
+      <picture><source media="(max-width:640px)" srcset="https://www.zugspitz-region-gmbh.de/media/images/common/aktuelles-mobile.png"><img class="ico-img" src="https://www.zugspitz-region-gmbh.de/media/images/common/aktuelles.png" alt=""></picture>Aktuelles</a>
+    <a class="btn" href="https://www.zugspitz-region-gmbh.de/de/events.html">
+      <picture><source media="(max-width:640px)" srcset="https://www.zugspitz-region-gmbh.de/media/images/common/events-blank.png"><img class="ico-img" src="https://www.zugspitz-region-gmbh.de/media/images/common/events.png" alt=""></picture>Events</a>
+    <a class="btn" href="https://www.zugspitz-region-gmbh.de/de/downloads.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg>Downloads</a>
+    <a class="btn" href="https://www.zugspitz-region.de/newsletter">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14"/><path d="m3 7 9 6 9-6"/></svg>Newsletter</a>
+  </div>
+
+  <section class="section intro">
+    <div class="wrap">
+      <h2 class="section-title">Wir stärken gemeinsam unsere Region nachhaltig:<br>Machen Sie mit!</h2>
+      <div class="lead">
+        <p>Als Wirtschaftsförderungsgesellschaft Zugspitz Region GmbH im Landkreis Garmisch-Partenkirchen, am Fuße der Zugspitze, fördern wir die regionale wirtschaftliche Entwicklung und sind Ansprechpartner für landkreisweite Gemeinschaftsprojekte. Weiterhin stoßen wir neue Projekte an, setzen diese um und bieten ein handlungsfeld- und branchenübergreifendes Netzwerk.</p>
+        <p><strong>Die Zugspitz Region GmbH fördert die wirtschaftliche Entwicklung in folgenden Handlungsfeldern und Themenbereichen:</strong></p>
+        <ul class="fieldlist">
+          <li><a class="chip" href="https://www.zugspitz-region-gmbh.de/de/wirtschaft.html">Wirtschaft</a></li>
+          <li><a class="chip" href="https://www.zugspitz-region-gmbh.de/de/gesundheit-soziales.html">Gesundheit und Soziales</a></li>
+          <li><a class="chip" href="https://www.zugspitz-region-gmbh.de/de/tourismus.html">Tourismus</a></li>
+          <li><a class="chip" href="https://www.zugspitz-region-gmbh.de/de/regional-management.html">Regionalmanagement</a></li>
+          <li><a class="chip" href="https://www.zugspitz-region-gmbh.de/de/landwirtschaft-umwelt.html">Landwirtschaft und Umwelt</a></li>
+          <li><a class="chip" href="https://www.zugspitz-region-gmbh.de/de/energie-klimaschutz.html">Energie und Klimaschutz</a></li>
+          <li><a class="chip" href="https://www.zugspitz-region-gmbh.de/de/die-dachmarke-zugspitz-region.html">Dachmarkenmanagement</a></li>
+        </ul>
+        <p>Das <a href="https://www.zugspitz-region-gmbh.de/de/regional-management.html">Regionalmanagement</a>, ein landesweites Förderprogramm zur Landesentwicklung, sowie die <a href="https://www.zugspitz-region-gmbh.de/de/gesundheit-soziales.html">Gesundheitsregion<sup>plus</sup></a>, eine Einrichtung des Freistaats Bayern, sind wichtige Handlungsbereiche der Zugspitz Region GmbH. Im Tourismusmarketing positionieren wir uns als <a href="https://www.zugspitz-region.de">Urlaubsdestination Zugspitz Region</a>, um als Zusammenschluss der Landkreisgemeinden mehr Sichtbarkeit und Schlagkraft auf dem Urlaubsmarkt zu gewinnen.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section grey" id="aktuelles">
+    <div class="wrap">
+      <h2 class="section-title">Aktuelles</h2>
+      <div class="news">
+        <a class="card" href="https://www.zugspitz-region-gmbh.de/de/aktuelles/d/Wohnraum%20neu%20Denken.html">
+          <div class="card__media">
+            <picture><source media="(max-width:640px)" srcset="https://www.zugspitz-region-gmbh.de/media/images/bezahlbarer_wohnraum/HeimatIst_klein.jpg"><img src="https://www.zugspitz-region-gmbh.de/media/images/bezahlbarer_wohnraum/HeimatIst_gross.jpg" alt="Plakat „Heimat ist, wo wir für einander (Wohn-)Raum schaffen“" loading="lazy"></picture>
+            <h3 class="card__title">Aktionstage „Wohnraum neu denken“</h3>
+            <span class="credit">©</span>
+          </div>
+          <div class="card__body">
+            <p>Der Mangel an bezahlbarem Wohnraum im Landkreis Garmisch-Partenkirchen ist aktueller denn je. Vom 17. bis 21. November 2026 laden die Zugspitz Region GmbH und ihre Partner ins Schlossmuseum Murnau ein.</p>
+            <span>Weiterlesen ›</span>
+          </div>
+        </a>
+        <a class="card" href="https://www.zugspitz-region-gmbh.de/de/aktuelles/d/Klimanetzwerk%20Kern.html">
+          <div class="card__media">
+            <picture><source media="(max-width:640px)" srcset="https://www.zugspitz-region-gmbh.de/media/images/energie__klima/Header_Website_mit_Schrift_Auschnitt.jpg"><img src="https://www.zugspitz-region-gmbh.de/media/images/energie__klima/Header_Website_mit_Schrift.jpg" alt="Klimanetzwerk für Unternehmen" loading="lazy"></picture>
+            <h3 class="card__title">Klimanetzwerk bei Kern Microtechnik GmbH</h3>
+            <span class="credit">©</span>
+          </div>
+          <div class="card__body">
+            <p>Viele sprechen über die Energiewende – die Kern Microtechnik GmbH in Eschenlohe setzt sie bereits eindrucksvoll um. Wie sieht ein zukunftsgerichtetes Energiekonzept in der Praxis aus?</p>
+            <span>Weiterlesen ›</span>
+          </div>
+        </a>
+        <a class="card" href="https://www.zugspitz-region-gmbh.de/de/aktuelles/d/kostenlose_ihk_beratung_fuer_gruenderinnen_und_gruender.html">
+          <div class="card__media contain">
+            <img src="https://www.zugspitz-region-gmbh.de/media/images/beratungsangebote/ihk_logo_bildmarke_1.png" alt="IHK-Logo" loading="lazy">
+            <h3 class="card__title">Kostenlose IHK-Beratung für Gründerinnen und Gründer</h3>
+          </div>
+          <div class="card__body">
+            <p>Eine innovative und neue Geschäftsidee ist der erste Schritt zur Existenzgründung. Die Beraterinnen und Berater der IHK für München und Oberbayern stehen mit viel Expertise zur Seite.</p>
+            <span>Weiterlesen ›</span>
+          </div>
+        </a>
+      </div>
+      <div class="center"><a class="btn" href="https://www.zugspitz-region-gmbh.de/de/aktuelles.html">Alle Meldungen</a></div>
+    </div>
+  </section>
+
+  <section class="section" id="handlungsfelder">
+    <div class="wrap">
+      <h2 class="section-title">Unsere Handlungsfelder</h2>
+      <div class="fields">
+        <article class="field" style="--c:var(--f-regional)">
+          <a class="field__head" href="https://www.zugspitz-region-gmbh.de/de/regional-management.html">
+            <span class="field__icon"><img src="https://www.zugspitz-region-gmbh.de/media/images/common/icon-regional.png" alt=""></span>
+            <h3>Regional&shy;management</h3></a>
+          <ul>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/wohnraum-im-wandel-.html">Wohnraum im Wandel</a></li>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/fach-und-arbeitskraefte.html">Fach- und Arbeitskräfte</a></li>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/besucherlenkung-tragfaehigkeitsanalyse.html">Besucherlenkung: Tragfähigkeitsanalyse</a></li>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/archiv-regionalmanagement.html">Archiv Regionalmanagement</a></li>
+          </ul>
+          <div class="field__more"><a href="https://www.zugspitz-region-gmbh.de/de/regional-management.html">Mehr erfahren</a></div>
+        </article>
+        <article class="field" style="--c:var(--f-gesundheit)">
+          <a class="field__head" href="https://www.zugspitz-region-gmbh.de/de/gesundheit-soziales.html">
+            <span class="field__icon"><img src="https://www.zugspitz-region-gmbh.de/media/images/common/icon-gesundheit.png" alt=""></span>
+            <h3>Gesundheit &amp; Soziales</h3></a>
+          <ul>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/gesundheits-dienstleister.html">Gesundheitsdienstleister</a></li>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/gesundheitstage.html">Gesundheitstage</a></li>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/pflege.html">Pflege</a></li>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/aktion-ratschbankerl.html">Aktion Ratschbankerl</a></li>
+          </ul>
+          <div class="field__more"><a href="https://www.zugspitz-region-gmbh.de/de/gesundheit-soziales.html">Mehr erfahren</a></div>
+        </article>
+        <article class="field" style="--c:var(--f-tourismus)">
+          <a class="field__head" href="https://www.zugspitz-region-gmbh.de/de/tourismus.html">
+            <span class="field__icon"><img src="https://www.zugspitz-region-gmbh.de/media/images/common/icon-tourismus.png" alt=""></span>
+            <h3>Tourismus</h3></a>
+          <ul>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/tourismustag.html">Tourismustag</a></li>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/wanderwege-beschilderung.html">Wanderwege-Beschilderung</a></li>
+            <li><a href="https://www.zugspitz-region.de">Urlaubsdestination Zugspitz Region</a></li>
+          </ul>
+          <div class="field__more"><a href="https://www.zugspitz-region-gmbh.de/de/tourismus.html">Mehr erfahren</a></div>
+        </article>
+        <article class="field" style="--c:var(--f-wirtschaft)">
+          <a class="field__head" href="https://www.zugspitz-region-gmbh.de/de/wirtschaft.html">
+            <span class="field__icon"><img src="https://www.zugspitz-region-gmbh.de/media/images/common/icon-wirtschaft.png" alt=""></span>
+            <h3>Wirtschaft</h3></a>
+          <ul>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/beratungen.html">Beratungen</a></li>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/foerderungen.html">Förderungen</a></li>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/gewerbeflaechen.html">Gewerbeflächen</a></li>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/ausbildungskompass.html">Ausbildungskompass</a></li>
+          </ul>
+          <div class="field__more"><a href="https://www.zugspitz-region-gmbh.de/de/wirtschaft.html">Mehr erfahren</a></div>
+        </article>
+        <article class="field" style="--c:var(--f-landwirtschaft)">
+          <a class="field__head" href="https://www.zugspitz-region-gmbh.de/de/landwirtschaft-umwelt.html">
+            <span class="field__icon"><img src="https://www.zugspitz-region-gmbh.de/media/images/common/icon-landwirtschaft.png" alt=""></span>
+            <h3>Landwirtschaft &amp; Umwelt</h3></a>
+          <ul>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/regionaltag-2026.html">Regionaltag 2026</a></li>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/regionale-produkte.html">Regionale Produkte</a></li>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/bluehender-landkreis.html">Blühender Landkreis</a></li>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/angebote-fuer-schulen.html">Angebote für Schulen</a></li>
+          </ul>
+          <div class="field__more"><a href="https://www.zugspitz-region-gmbh.de/de/landwirtschaft-umwelt.html">Mehr erfahren</a></div>
+        </article>
+        <article class="field" style="--c:var(--f-energie)">
+          <a class="field__head" href="https://www.zugspitz-region-gmbh.de/de/energie-klimaschutz.html">
+            <span class="field__icon"><img src="https://www.zugspitz-region-gmbh.de/media/images/common/icon-energie.png" alt=""></span>
+            <h3>Energie &amp; Klimaschutz</h3></a>
+          <ul>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/klimanetzwerk.html">Klimanetzwerk</a></li>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/energiekarawane.html">Energiekarawane</a></li>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/solarpotenzialkataster.html">Solarpotenzialkataster</a></li>
+            <li><a href="https://www.zugspitz-region-gmbh.de/de/stadtradeln.html">Stadtradeln</a></li>
+          </ul>
+          <div class="field__more"><a href="https://www.zugspitz-region-gmbh.de/de/energie-klimaschutz.html">Mehr erfahren</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="dachmarke">
+    <div class="band__in">
+      <div class="band__media">
+        <img src="https://www.zugspitz-region-gmbh.de/media/images/common/Webseite_GmbH_Stoerer_225x130_04.png" alt="Unsere Dachmarke" width="225" height="130">
+      </div>
+      <div class="band__txt">
+        <h2 id="dachmarke">Die Dachmarke Zugspitz Region</h2>
+        <p>Dachmarkenmanagement ist eines unserer Handlungsfelder: Mit Markenpartnerschaften, dem Spitzenprodukt und der Regionalmarke „Inser Hoamat“ machen wir die Qualität der Region sichtbar.</p>
+        <div class="band__links">
+          <a class="btn btn--light" href="https://www.zugspitz-region-gmbh.de/de/die-dachmarke-zugspitz-region.html">Zur Dachmarke</a>
+          <a class="btn btn--light" href="https://www.zugspitz-region-gmbh.de/de/markenpartnerschaft.html">Markenpartnerschaft</a>
+          <a class="btn btn--light" href="https://www.zugspitz-region-gmbh.de/de/regionalmarke-inser-hoamat.html">Inser Hoamat</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section grey">
+    <div class="wrap">
+      <h2 class="section-title">Wofür steht die GmbH noch?</h2>
+      <div class="services">
+        <div class="service">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5c-.5-1-1.5-1.5-2.5-1.5-1.7 0-3 1-3 2.3 0 3 5.5 1.4 5.5 4.2 0 1.3-1.3 2.5-3 2.5-1.2 0-2.3-.6-2.8-1.6M12 6v2m0 8v2"/></svg>
+          <h3>Beratung und Know-how zu Fördergeldern</h3>
+          <p>Für Unternehmen innerhalb und außerhalb des Landkreises sind wir ein starker Standortpartner und unterstützen Betriebe durch verschiedene <a href="https://www.zugspitz-region-gmbh.de/de/beratungen.html">Beratungsangebote</a> und <a href="https://www.zugspitz-region-gmbh.de/de/foerderungen.html">Fördermöglichkeiten</a>. Wir kooperieren eng mit den Ansprechpartnern für Förderprogramme wie LEADER und INTERREG.</p>
+        </div>
+        <div class="service">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg>
+          <h3>Synergien schaffen und Kosten optimieren</h3>
+          <p>Im Regionalmanagement setzen wir mit Partnern aus Wirtschaft und sozialen Dienstleistungsbetrieben branchenübergreifende Projekte um. Kommunen und Unternehmen sparen Kosten und profitieren von gemeinsamem Projektmanagement.</p>
+        </div>
+        <div class="service">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="6" r="2.2"/><circle cx="19" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7 7l3.8 9M17 7l-3.8 9M7.2 6h9.6"/></svg>
+          <h3>Austausch durch Netzwerkarbeit</h3>
+          <p>Durch die Vernetzung lokaler Akteure und den Austausch mit Branchenexperten tragen wir zu mehr Qualität und Attraktivität des Landkreises Garmisch-Partenkirchen als Wirtschaftsstandort bei.</p>
+        </div>
+        <div class="service">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10v4h3l6 4V6L7 10H4zM17 9a4 4 0 0 1 0 6M19.5 6.5a7.5 7.5 0 0 1 0 11"/></svg>
+          <h3>Mehrwert durch Lobbyarbeit</h3>
+          <p>Wir verstehen uns als Sprachrohr zur Politik, vertreten die Interessen unserer Partner und gestalten aktiv die Zukunft unserer Region.</p>
+          <blockquote>„Gemeinsam erreichen wir mehr“</blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2 class="section-title">Förderer &amp; Partner</h2>
+      <div class="partners">
+        <img src="https://www.zugspitz-region-gmbh.de/media/images/markenmanagement/interreg-logo-2025.png" alt="Interreg" loading="lazy">
+        <img src="https://www.zugspitz-region-gmbh.de/media/images/markenmanagement/Wappen-LEADER.jpg" alt="LEADER" loading="lazy">
+        <img src="https://www.zugspitz-region-gmbh.de/media/images/markenmanagement/Logo_StMFH_als_Foerderer.png" alt="Bayerisches Staatsministerium der Finanzen und für Heimat als Förderer" loading="lazy">
+        <img src="https://www.zugspitz-region-gmbh.de/media/images/logos/Logo_Regionalmanagement.png" alt="Regionalmanagement Bayern" loading="lazy">
+        <img src="https://www.zugspitz-region-gmbh.de/media/images/logos/logo_gesundheitsregionen_plus.png" alt="Gesundheitsregionen plus" loading="lazy">
+        <img src="https://www.zugspitz-region-gmbh.de/media/images/markenmanagement/logo-heimat-digital-regional.png" alt="Heimat digital regional" loading="lazy">
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__cols">
+      <div>
+        <a class="footer__brand" href="https://www.zugspitz-region-gmbh.de/de/home.html"><img src="https://www.zugspitz-region-gmbh.de/media/images/common/logo-menu.png" alt="Zugspitz Region GmbH"></a>
+        <address>Zugspitz Region GmbH<br>Burgstr. 15<br>D-82467 Garmisch-Partenkirchen</address>
+      </div>
+      <div>
+        <p style="margin-top:0">Kontaktieren Sie uns über<br><a href="mailto:kontakt@zugspitz-region.de">kontakt@zugspitz-region.de</a><br>oder <a href="https://www.zugspitz-region-gmbh.de/de/team.html">unser Team</a></p>
+        <a class="btn btn--conv" href="https://www.zugspitz-region.de/newsletter">Newsletter abonnieren</a>
+      </div>
+      <div>
+        <p style="margin-top:0"><strong>Folgen Sie uns</strong></p>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/" aria-label="Facebook"><img src="https://www.zugspitz-region-gmbh.de/media/images/common/fb-icon.png" alt="Facebook"></a>
+        </div>
+      </div>
+    </div>
+    <nav class="footer__legal" aria-label="Rechtliches">
+      <a href="https://www.zugspitz-region-gmbh.de/de/home.html">Startseite</a> |
+      <a href="https://www.zugspitz-region.de/newsletter">Newsletter</a> |
+      <a href="#">Sitemap</a> |
+      <a href="https://www.zugspitz-region-gmbh.de/de/datenschutz.html">Datenschutz</a> |
+      <a href="#">Impressum</a> |
+      <a href="https://www.zugspitz-region-gmbh.de/de/team.html">Kontakt</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+const btn=document.getElementById('menuBtn'), nav=document.getElementById('nav');
+btn.addEventListener('click',()=>{const o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o);btn.setAttribute('aria-label',o?'Menü schließen':'Menü öffnen');});
+</script>
+</body>
+</html>
